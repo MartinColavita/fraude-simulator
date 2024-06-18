@@ -45,15 +45,15 @@ public class MerchantController {
                             examples = {
                                     @ExampleObject(
                                             name = "Ejemplo 1",
-                                            value = "{\n\"terminalId\": \"T123\"\n}"
+                                            value = "{\"terminalId\": \"T123\"}"
                                     ),
                                     @ExampleObject(
                                             name = "Ejemplo 2",
-                                            value = "{\n\"terminalId\": \"T456\"\n}"
+                                            value = "{\"terminalId\": \"T456\"}"
                                     ),
                                     @ExampleObject(
                                             name = "Ejemplo 3",
-                                            value = "{\n\"terminalId\": \"T789\"\n}"
+                                            value = "{\"terminalId\": \"T789\"}"
                                     )
                             }
                     )

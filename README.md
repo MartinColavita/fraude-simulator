@@ -48,5 +48,5 @@ La aplicación expone dos endpoints principales:
    
 
 # SWAGGER
-Para acceder a la documentación de la API, se puede ingresar a la siguiente URL: `http://localhost:8080/fraude-simulator/swagger-ui.html`
+Para acceder a la documentación de la API, se puede ingresar a la siguiente URL: `http://localhost:8080/swagger-ui.html`
    
