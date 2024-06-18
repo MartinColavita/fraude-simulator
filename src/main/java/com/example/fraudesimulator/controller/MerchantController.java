@@ -4,6 +4,10 @@ package com.example.fraudesimulator.controller;
 import com.example.fraudesimulator.model.Merchant;
 import com.example.fraudesimulator.response.ResponseMerchant;
 import com.example.fraudesimulator.services.MerchantService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -31,6 +35,30 @@ public class MerchantController {
      * con un campo "success" que indica si la transacción fue aprobada o no, y un campo "message" con un mensaje descriptivo.
      */
     @PostMapping("/transaction")
+    @Operation(
+            summary = "Verificar si una transacción es fraudulenta",
+            description = "Este endpoint acepta un objeto JSON que contiene el ID del terminal del comerciante y devuelve un objeto JSON con un campo 'success' que indica si la transacción fue aprobada o no, y un campo 'message' con un mensaje descriptivo.",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Map.class),
+                            examples = {
+                                    @ExampleObject(
+                                            name = "Ejemplo 1",
+                                            value = "{\"terminalId\": \"T123\"}"
+                                    ),
+                                    @ExampleObject(
+                                            name = "Ejemplo 2",
+                                            value = "{\"terminalId\": \"T456\"}"
+                                    ),
+                                    @ExampleObject(
+                                            name = "Ejemplo 3",
+                                            value = "{\"terminalId\": \"T789\"}"
+                                    )
+                            }
+                    )
+            )
+    )
     public ResponseMerchant checkTransaction(@RequestBody Map<String, String> body) {
         String terminalId = body.get("terminalId");
         boolean isFraud = merchantService.isFraudulentTransaction(terminalId);
